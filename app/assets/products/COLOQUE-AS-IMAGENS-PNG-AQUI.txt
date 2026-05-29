@@ -1,0 +1,2 @@
+Coloque aqui os produtos em PNG sem fundo.
+Exemplo: Batata Especial -> batata-especial.png

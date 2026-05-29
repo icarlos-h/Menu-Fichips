@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Menu FiChips - Tela 1</title>
+  <link rel="stylesheet" href="assets/css/screen-1.css">
+</head>
+<body>
+  <main class="menu-screen" id="menuScreen">
+    <div class="decor decor-circle decor-circle-red decor-a"></div>
+    <div class="decor decor-circle decor-circle-gold decor-b"></div>
+    <div class="decor decor-circle decor-circle-gold decor-c"></div>
+    <div class="decor decor-circle decor-circle-red decor-d"></div>
+
+    <svg class="decor-lines decor-lines-left" viewBox="0 0 900 900" aria-hidden="true">
+      <path d="M-100 660 C 200 840, 430 850, 690 660" />
+      <path d="M-160 720 C 180 920, 500 920, 820 700" />
+    </svg>
+
+    <svg class="decor-lines decor-lines-top" viewBox="0 0 900 400" aria-hidden="true">
+      <path d="M120 360 C 300 130, 520 90, 820 130" />
+      <path d="M80 330 C 280 80, 570 25, 860 90" />
+    </svg>
+
+    <div class="dot-grid" aria-hidden="true"></div>
+
+    <section class="product-side">
+      <div class="badge">
+        <span class="badge-icon">★</span>
+        <span id="badgeText">Destaque</span>
+      </div>
+
+      <div class="product-image-wrap">
+        <img id="productImage" class="product-image" alt="Produto em destaque">
+        <div id="imageFallback" class="image-fallback">
+          <strong>Imagem não encontrada</strong>
+          <span>Adicione o PNG em<br>assets/products</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="info-side">
+      <div class="title-block">
+        <h1 id="productTitle">
+          <span>Produto</span>
+          <span>Especial</span>
+        </h1>
+        <div class="title-accent"></div>
+      </div>
+
+      <div class="price-block">
+        <span class="currency">R$</span>
+        <strong id="productPrice">--,--</strong>
+      </div>
+
+      <div class="details">
+        <div class="detail-row">
+          <span class="detail-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8 7h8M9 7l-2 9h10l-2-9M10 4h4v3h-4z"/>
+            </svg>
+          </span>
+          <span id="productWeight">--</span>
+        </div>
+
+        <div class="detail-line"></div>
+
+        <div class="detail-row">
+          <span class="detail-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 12c2 5 14 5 16 0M7 11c2-3 8-3 10 0M8 15h8"/>
+            </svg>
+          </span>
+          <span id="productDescription">Descrição do produto</span>
+        </div>
+      </div>
+    </section>
+
+    <aside class="side-strip" aria-hidden="true">
+      <div class="strip-inner">
+        <span class="red-line red-line-a"></span>
+        <span class="red-line red-line-b"></span>
+        <span class="gold-line gold-line-a"></span>
+        <span class="gold-line gold-line-b"></span>
+        <span class="chevrons">›››</span>
+        <span class="chevrons chevrons-bottom">›››</span>
+      </div>
+    </aside>
+
+    <div class="connection-gold"></div>
+
+    <div id="connectionStatus" class="connection-status">Carregando dados...</div>
+  </main>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/screen-1.js"></script>
+</body>
+</html>
