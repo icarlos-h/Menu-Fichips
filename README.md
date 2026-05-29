@@ -87,3 +87,5 @@ Também ative, se disponível:
 - Restore on AC Power Loss
 - Power On After Power Failure
 # Menu-Fichips
+# Menu-Fichips
+# Menu-Fichips
