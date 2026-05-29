@@ -144,6 +144,16 @@ h1 span {
   display: block;
 }
 
+#productTitle.title-long {
+  font-size: clamp(58px, 6.2vw, 126px);
+  letter-spacing: -0.06em;
+}
+
+#productTitle.title-extra-long {
+  font-size: clamp(48px, 5.2vw, 104px);
+  letter-spacing: -0.052em;
+}
+
 h1 span:first-child {
   color: var(--navy);
 }
@@ -218,6 +228,11 @@ h1 span:last-child {
   stroke-width: 1.9;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+.ingredients-row span:last-child {
+  max-width: 620px;
+  line-height: 1.2;
 }
 
 .detail-line {
@@ -468,6 +483,14 @@ h1 span:last-child {
 
   h1 {
     font-size: clamp(56px, 6.2vw, 118px);
+  }
+
+  #productTitle.title-long {
+    font-size: clamp(48px, 5.4vw, 98px);
+  }
+
+  #productTitle.title-extra-long {
+    font-size: clamp(40px, 4.7vw, 82px);
   }
 
   .price-block strong {

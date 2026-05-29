@@ -6,7 +6,9 @@ const elements = {
   title: $("#productTitle"),
   price: $("#productPrice"),
   weight: $("#productWeight"),
-  description: $("#productDescription"),
+  ingredients: $("#productIngredients"),
+  ingredientsRow: $("#ingredientsRow"),
+  ingredientsLine: $("#ingredientsLine"),
   image: $("#productImage"),
   imageFallback: $("#imageFallback"),
   status: $("#connectionStatus"),
@@ -186,26 +188,28 @@ function getProductData(item) {
     "porção"
   ]) || CONFIG.fallbackWeight || "";
 
-  const description = pickField(item, [
-    "descricao",
-    "descrição",
-    "description",
+  const ingredients = pickField(item, [
     "ingredientes",
-    "detalhes",
+    "ingredients",
     "composicao",
     "composição"
-  ]) || CONFIG.fallbackDescription || "";
+  ]) || CONFIG.fallbackIngredients || "";
 
   return {
     title,
     price: formatPrice(price),
     weight,
-    description
+    ingredients
   };
 }
 
 function renderProduct(data) {
   const [line1, line2] = splitTitle(data.title);
+  const titleLength = String(data.title || "").length;
+  const titleWordCount = String(data.title || "").trim().split(/\s+/).filter(Boolean).length;
+
+  elements.title.classList.toggle("title-long", titleLength > 18 || titleWordCount > 3);
+  elements.title.classList.toggle("title-extra-long", titleLength > 26 || titleWordCount > 4);
 
   elements.title.innerHTML = `
     <span>${line1}</span>
@@ -214,8 +218,11 @@ function renderProduct(data) {
 
   elements.price.textContent = data.price || CONFIG.fallbackPrice || "--";
   elements.weight.textContent = data.weight || CONFIG.fallbackWeight || "";
-  elements.description.textContent =
-    data.description || CONFIG.fallbackDescription || "";
+
+  const ingredients = String(data.ingredients || CONFIG.fallbackIngredients || "").trim();
+  elements.ingredients.textContent = ingredients;
+  elements.ingredientsRow.hidden = !ingredients;
+  elements.ingredientsLine.hidden = !ingredients;
 
   elements.badge.textContent = CONFIG.badgeText || "Destaque";
 
@@ -241,7 +248,7 @@ function renderFallback(reason = "") {
     title: getCurrentProductTitle(),
     price: CONFIG.fallbackPrice || "--",
     weight: CONFIG.fallbackWeight || "",
-    description: CONFIG.fallbackDescription || ""
+    ingredients: CONFIG.fallbackIngredients || ""
   });
 
   elements.status.textContent = reason || "Usando dados locais.";
@@ -256,7 +263,7 @@ function renderCurrentProduct() {
       title: productTitle,
       price: CONFIG.fallbackPrice || "--",
       weight: CONFIG.fallbackWeight || "",
-      description: CONFIG.fallbackDescription || ""
+      ingredients: CONFIG.fallbackIngredients || ""
     });
 
     elements.status.textContent = `Produto não encontrado no App Script: ${productTitle}`;
