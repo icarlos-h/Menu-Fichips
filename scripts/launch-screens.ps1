@@ -1,5 +1,5 @@
 param(
-    [bool]$FullscreenInsteadOfPositioned = $false
+    [bool]$FullscreenInsteadOfPositioned = $true
 )
 
 $ErrorActionPreference = "Stop"
@@ -26,16 +26,12 @@ function To-FileUrl($Path) {
     return "file:///" + ($Path.Replace("\", "/").Replace(" ", "%20"))
 }
 
-$Screen1 = To-FileUrl (Join-Path $AppRoot "screen-1.html")
-$Screen2 = To-FileUrl (Join-Path $AppRoot "screen-2.html")
-$Screen3 = To-FileUrl (Join-Path $AppRoot "screen-3.html")
+$MainScreen = To-FileUrl (Join-Path $AppRoot "screen-1.html")
 
-# Ajuste estes valores quando as 3 telas estiverem conectadas.
-# Configuração padrão: 3 telas Full HD lado a lado.
+# Configuração atual: uma única janela 3840x720.
+# O HTML principal divide esse painel em 3 colunas internas.
 $Monitors = @(
-    @{ Url = $Screen1; X = 0;    Y = 0; Width = 1920; Height = 1080; Profile = "fichips-screen-1" },
-    @{ Url = $Screen2; X = 1920; Y = 0; Width = 1920; Height = 1080; Profile = "fichips-screen-2" },
-    @{ Url = $Screen3; X = 3840; Y = 0; Width = 1920; Height = 1080; Profile = "fichips-screen-3" }
+    @{ Url = $MainScreen; X = 0; Y = 0; Width = 3840; Height = 720; Profile = "fichips-main-panel" }
 )
 
 # Fecha processos Edge criados por este projeto quando possível.

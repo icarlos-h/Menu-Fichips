@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Menu FiChips - Tela 1</title>
+  <title>Menu FiChips - Painel 3840x720</title>
   <link rel="stylesheet" href="assets/css/screen-1.css">
 </head>
 <body>
@@ -24,11 +24,24 @@
     </svg>
 
     <div class="dot-grid" aria-hidden="true"></div>
+    <div class="background-halo background-halo-product" aria-hidden="true"></div>
+    <div class="background-halo background-halo-info" aria-hidden="true"></div>
+    <div class="background-ring background-ring-a" aria-hidden="true"></div>
+    <div class="background-ring background-ring-b" aria-hidden="true"></div>
+    <div class="background-sweep" aria-hidden="true"></div>
 
-    <section class="product-side">
+    <section class="menu-column product-column">
       <div class="badge">
         <span class="badge-icon">★</span>
         <span id="badgeText">Destaque</span>
+      </div>
+
+      <div class="title-block">
+        <h1 id="productTitle">
+          <span>Produto</span>
+          <span>Especial</span>
+        </h1>
+        <div class="title-accent"></div>
       </div>
 
       <div class="product-image-wrap">
@@ -38,57 +51,41 @@
           <span>Adicione o PNG em<br>assets/products</span>
         </div>
       </div>
-    </section>
 
-    <section class="info-side">
-      <div class="title-block">
-        <h1 id="productTitle">
-          <span>Produto</span>
-          <span>Especial</span>
-        </h1>
-        <div class="title-accent"></div>
-      </div>
-
-      <div class="price-block">
-        <span class="currency">R$</span>
-        <strong id="productPrice">--,--</strong>
-      </div>
-
-      <div class="details">
-        <div class="detail-row">
-          <span class="detail-icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M8 7h8M9 7l-2 9h10l-2-9M10 4h4v3h-4z"/>
-            </svg>
-          </span>
-          <span id="productWeight">--</span>
+      <div class="product-footer">
+        <div class="price-block">
+          <span class="currency">R$</span>
+          <strong id="productPrice">--,--</strong>
         </div>
 
-        <div class="detail-line"></div>
-
-        <div class="detail-row">
-          <span class="detail-icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M4 12c2 5 14 5 16 0M7 11c2-3 8-3 10 0M8 15h8"/>
-            </svg>
-          </span>
-          <span id="productDescription">Descrição do produto</span>
+        <div class="details">
+          <div class="detail-row">
+            <span class="detail-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M8 7h8M9 7l-2 9h10l-2-9M10 4h4v3h-4z"/>
+              </svg>
+            </span>
+            <span id="productWeight">--</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <aside class="side-strip" aria-hidden="true">
-      <div class="strip-inner">
-        <span class="red-line red-line-a"></span>
-        <span class="red-line red-line-b"></span>
-        <span class="gold-line gold-line-a"></span>
-        <span class="gold-line gold-line-b"></span>
-        <span class="chevrons">›››</span>
-        <span class="chevrons chevrons-bottom">›››</span>
+    <section class="menu-column placeholder-column column-two">
+      <div class="placeholder-card">
+        <span class="column-label">Coluna 2</span>
+        <strong>Próxima área</strong>
+        <p>Espaço reservado para novos produtos ou combos.</p>
       </div>
-    </aside>
+    </section>
 
-    <div class="connection-gold"></div>
+    <section class="menu-column placeholder-column column-three">
+      <div class="placeholder-card">
+        <span class="column-label">Coluna 3</span>
+        <strong>Terceira área</strong>
+        <p>Espaço reservado para bebidas, adicionais ou promoções.</p>
+      </div>
+    </section>
 
     <div id="connectionStatus" class="connection-status">Carregando dados...</div>
   </main>
