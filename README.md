@@ -1,6 +1,6 @@
 # Menu FiChips - Digital Signage Local
 
-Projeto base para abrir um painel local de 3840x720 em um computador Windows, dividido visualmente em 3 colunas.
+Projeto base para abrir em tela cheia um painel local de 3840x720 em um computador Windows, dividido visualmente em 3 colunas.
 
 ## Caminho recomendado
 
@@ -41,7 +41,7 @@ E escolha:
 Executar como administrador
 
 Isso cria:
-- abertura automática do painel 3840x720 5 minutos após login
+- abertura automática em tela cheia do painel 3840x720 5 minutos após login
 - desligamento automático todos os dias à meia-noite
 
 ## Remover tarefas automáticas

@@ -1,5 +1,5 @@
 param(
-    [bool]$FullscreenInsteadOfPositioned = $false
+    [bool]$FullscreenInsteadOfPositioned = $true
 )
 
 $ErrorActionPreference = "Stop"

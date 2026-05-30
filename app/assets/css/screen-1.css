@@ -81,8 +81,10 @@ body {
 .product-column {
   padding: clamp(20px, 2.2vw, 42px) clamp(24px, 2.5vw, 54px) clamp(18px, 2vw, 34px);
   display: grid;
-  grid-template-rows: auto minmax(250px, 1fr) auto;
-  gap: clamp(10px, 1.1vw, 24px);
+  grid-template-columns: minmax(0, 52%) minmax(0, 48%);
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  column-gap: clamp(18px, 2vw, 40px);
+  row-gap: clamp(8px, 1vh, 18px);
   background:
     radial-gradient(circle at 52% 48%, rgba(232, 188, 100, 0.16), transparent 40%),
     linear-gradient(90deg, rgba(255,255,255,0.92), rgba(255,255,255,0.68));
@@ -122,6 +124,8 @@ body {
 .title-block {
   position: relative;
   z-index: 4;
+  grid-column: 1;
+  grid-row: 1;
   align-self: end;
   padding-top: clamp(34px, 5vh, 50px);
 }
@@ -169,6 +173,8 @@ h1 span:last-child {
 .product-image-wrap {
   position: relative;
   z-index: 3;
+  grid-column: 2;
+  grid-row: 1 / 4;
   width: 100%;
   min-height: 0;
   display: grid;
@@ -185,55 +191,27 @@ h1 span:last-child {
 
 .product-image-wrap::before {
   z-index: 0;
-  width: min(42vw, 600px);
-  height: min(42vw, 600px);
+  width: min(31vw, 720px);
+  height: min(31vw, 720px);
   background: radial-gradient(circle, rgba(232, 188, 100, 0.2), rgba(232, 188, 100, 0.08) 34%, transparent 64%);
   animation: productSpotlight 6.5s ease-in-out infinite;
 }
 
 .product-image-wrap::after {
   z-index: 1;
-  width: min(31vw, 455px);
-  height: min(31vw, 455px);
+  width: min(24vw, 560px);
+  height: min(24vw, 560px);
   border: 3px solid rgba(232, 188, 100, 0.24);
   border-left-color: transparent;
   border-bottom-color: rgba(7, 29, 67, 0.08);
   animation: productRingSpin 12s linear infinite;
 }
 
-.product-image-wrap::before,
-.product-image-wrap::after {
-  content: "";
-  position: absolute;
-  pointer-events: none;
-  border-radius: 50%;
-}
-
-.product-image-wrap::before {
-  z-index: 0;
-  width: min(68vw, 980px);
-  height: min(68vw, 980px);
-  background: radial-gradient(circle, rgba(232, 188, 100, 0.18), rgba(232, 188, 100, 0.08) 34%, transparent 62%);
-  transform: translate(2%, 6%);
-  animation: productSpotlight 6.5s ease-in-out infinite;
-}
-
-.product-image-wrap::after {
-  z-index: 1;
-  width: min(48vw, 720px);
-  height: min(48vw, 720px);
-  border: 3px solid rgba(232, 188, 100, 0.22);
-  border-left-color: transparent;
-  border-bottom-color: rgba(7, 29, 67, 0.08);
-  transform: translate(2%, 6%) rotate(-12deg);
-  animation: productRingSpin 12s linear infinite;
-}
-
 .product-image {
   position: relative;
   z-index: 2;
-  max-width: min(88%, 650px);
-  max-height: 34vh;
+  max-width: min(112%, 680px);
+  max-height: 58vh;
   object-fit: contain;
   filter: drop-shadow(0 26px 24px rgba(7, 29, 67, 0.18));
   transform-origin: center bottom;
@@ -268,10 +246,14 @@ h1 span:last-child {
 .product-footer {
   position: relative;
   z-index: 4;
+  grid-column: 1;
+  grid-row: 2 / 4;
+  align-self: end;
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: clamp(14px, 1.6vw, 28px);
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: clamp(10px, 1.3vh, 18px);
 }
 
 .price-block {
@@ -289,7 +271,7 @@ h1 span:last-child {
 }
 
 .price-block strong {
-  font-size: clamp(72px, 5.6vw, 132px);
+  font-size: clamp(82px, 6.4vw, 150px);
   line-height: 0.78;
   letter-spacing: -0.075em;
   font-weight: 950;
@@ -298,7 +280,7 @@ h1 span:last-child {
 
 .details {
   margin: 0;
-  max-width: 36%;
+  max-width: 100%;
 }
 
 .detail-row {
@@ -631,8 +613,8 @@ h1 span:last-child {
 }
 
 @keyframes productFloat {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-10px) scale(1.01); }
+  0%, 100% { transform: translateY(0) scale(1.08); }
+  50% { transform: translateY(-10px) scale(1.12); }
 }
 
 @keyframes floatBadge {
