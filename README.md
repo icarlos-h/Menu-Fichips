@@ -1,6 +1,6 @@
 # Menu FiChips - Digital Signage Local
 
-Projeto base para abrir 3 telas locais em um computador Windows.
+Projeto base para abrir um painel local de 3840x720 em um computador Windows, dividido visualmente em 3 colunas.
 
 ## Caminho recomendado
 
@@ -41,7 +41,7 @@ E escolha:
 Executar como administrador
 
 Isso cria:
-- abertura automática 5 minutos após login
+- abertura automática do painel 3840x720 5 minutos após login
 - desligamento automático todos os dias à meia-noite
 
 ## Remover tarefas automáticas
@@ -54,21 +54,18 @@ E escolha:
 
 Executar como administrador
 
-## Importante sobre as telas
+## Importante sobre o painel
 
-Para mostrar 3 conteúdos diferentes, o Windows precisa reconhecer 3 monitores diferentes.
+A configuração atual abre apenas um documento principal:
 
-Não serve HDMI splitter comum, porque splitter comum só espelha a mesma imagem.
+app\screen-1.html
 
-O correto é usar:
-- 3 saídas de vídeo reais
-- adaptador USB/DisplayLink
-- placa de vídeo com múltiplas saídas
-- controlador/matriz que entregue telas independentes
+Esse documento foi pensado para uma área de 3840x720 e é dividido em 3 colunas internas.
 
-No Windows, use:
+A primeira coluna mostra o produto em destaque com foto, nome, preço e gramatura.
+As outras duas colunas ficam reservadas para próximos conteúdos do cardápio.
 
-Configurações > Sistema > Tela > Estender estes vídeos
+Se o Windows estiver usando mais de uma TV/saída de vídeo, configure a resolução final para entregar um painel único de 3840x720 ou ajuste `scripts\launch-screens.ps1` conforme o mapeamento real da tela.
 
 ## Ligar automaticamente às 08:00
 
