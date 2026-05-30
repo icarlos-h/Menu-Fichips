@@ -10,7 +10,6 @@ window.MENU_CONFIG = {
 
   fallbackPrice: "-",
   fallbackWeight: "-",
-  fallbackDescription: "-",
 
   badgeText: "Destaque",
 

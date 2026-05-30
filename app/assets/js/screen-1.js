@@ -6,7 +6,6 @@ const elements = {
   title: $("#productTitle"),
   price: $("#productPrice"),
   weight: $("#productWeight"),
-  description: $("#productDescription"),
   image: $("#productImage"),
   imageFallback: $("#imageFallback"),
   status: $("#connectionStatus"),
@@ -186,26 +185,20 @@ function getProductData(item) {
     "porção"
   ]) || CONFIG.fallbackWeight || "";
 
-  const description = pickField(item, [
-    "descricao",
-    "descrição",
-    "description",
-    "ingredientes",
-    "detalhes",
-    "composicao",
-    "composição"
-  ]) || CONFIG.fallbackDescription || "";
-
   return {
     title,
     price: formatPrice(price),
-    weight,
-    description
+    weight
   };
 }
 
 function renderProduct(data) {
   const [line1, line2] = splitTitle(data.title);
+  const titleLength = String(data.title || "").length;
+  const titleWordCount = String(data.title || "").trim().split(/\s+/).filter(Boolean).length;
+
+  elements.title.classList.toggle("title-long", titleLength > 18 || titleWordCount > 3);
+  elements.title.classList.toggle("title-extra-long", titleLength > 26 || titleWordCount > 4);
 
   elements.title.innerHTML = `
     <span>${line1}</span>
@@ -214,8 +207,6 @@ function renderProduct(data) {
 
   elements.price.textContent = data.price || CONFIG.fallbackPrice || "--";
   elements.weight.textContent = data.weight || CONFIG.fallbackWeight || "";
-  elements.description.textContent =
-    data.description || CONFIG.fallbackDescription || "";
 
   elements.badge.textContent = CONFIG.badgeText || "Destaque";
 
@@ -240,8 +231,7 @@ function renderFallback(reason = "") {
   renderProduct({
     title: getCurrentProductTitle(),
     price: CONFIG.fallbackPrice || "--",
-    weight: CONFIG.fallbackWeight || "",
-    description: CONFIG.fallbackDescription || ""
+    weight: CONFIG.fallbackWeight || ""
   });
 
   elements.status.textContent = reason || "Usando dados locais.";
@@ -255,8 +245,7 @@ function renderCurrentProduct() {
     renderProduct({
       title: productTitle,
       price: CONFIG.fallbackPrice || "--",
-      weight: CONFIG.fallbackWeight || "",
-      description: CONFIG.fallbackDescription || ""
+      weight: CONFIG.fallbackWeight || ""
     });
 
     elements.status.textContent = `Produto não encontrado no App Script: ${productTitle}`;
