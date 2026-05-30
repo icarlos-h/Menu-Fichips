@@ -36,6 +36,33 @@ body {
   grid-template-columns: 53% 39% 8%;
 }
 
+.menu-screen::before,
+.menu-screen::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.menu-screen::before {
+  inset: -18%;
+  background:
+    radial-gradient(circle at 28% 56%, rgba(232, 188, 100, 0.16), transparent 21%),
+    radial-gradient(circle at 62% 24%, rgba(7, 29, 67, 0.08), transparent 18%),
+    linear-gradient(115deg, transparent 36%, rgba(232, 188, 100, 0.08) 46%, transparent 58%);
+  animation: backgroundBreathe 11s ease-in-out infinite;
+}
+
+.menu-screen::after {
+  inset: 0;
+  opacity: 0.34;
+  background-image:
+    linear-gradient(120deg, transparent 0 47%, rgba(7, 29, 67, 0.045) 48%, transparent 49% 100%),
+    linear-gradient(120deg, transparent 0 57%, rgba(232, 188, 100, 0.08) 58%, transparent 59% 100%);
+  background-size: 420px 420px, 620px 620px;
+  animation: backgroundPatternDrift 18s linear infinite;
+}
+
 .product-side {
   position: relative;
   z-index: 3;
@@ -82,6 +109,34 @@ body {
   height: 76vh;
   display: grid;
   place-items: end center;
+}
+
+.product-image-wrap::before,
+.product-image-wrap::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+}
+
+.product-image-wrap::before {
+  z-index: 0;
+  width: min(68vw, 980px);
+  height: min(68vw, 980px);
+  background: radial-gradient(circle, rgba(232, 188, 100, 0.18), rgba(232, 188, 100, 0.08) 34%, transparent 62%);
+  transform: translate(2%, 6%);
+  animation: productSpotlight 6.5s ease-in-out infinite;
+}
+
+.product-image-wrap::after {
+  z-index: 1;
+  width: min(48vw, 720px);
+  height: min(48vw, 720px);
+  border: 3px solid rgba(232, 188, 100, 0.22);
+  border-left-color: transparent;
+  border-bottom-color: rgba(7, 29, 67, 0.08);
+  transform: translate(2%, 6%) rotate(-12deg);
+  animation: productRingSpin 12s linear infinite;
 }
 
 .product-image {
@@ -415,6 +470,72 @@ h1 span:last-child {
   opacity: 0.3;
   background-image: radial-gradient(var(--gold) 18%, transparent 19%);
   background-size: 22px 22px;
+  animation: dotGridDrift 9s ease-in-out infinite;
+}
+
+.background-halo,
+.background-ring,
+.background-sweep {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.background-halo {
+  border-radius: 50%;
+  filter: blur(2px);
+}
+
+.background-halo-product {
+  left: 6%;
+  top: 22%;
+  width: min(52vw, 920px);
+  height: min(52vw, 920px);
+  background: radial-gradient(circle, rgba(232, 188, 100, 0.14), rgba(232, 188, 100, 0.06) 42%, transparent 68%);
+  animation: haloPulse 7s ease-in-out infinite;
+}
+
+.background-halo-info {
+  right: 9%;
+  top: 13%;
+  width: min(34vw, 600px);
+  height: min(34vw, 600px);
+  background: radial-gradient(circle, rgba(7, 29, 67, 0.07), rgba(232, 188, 100, 0.05) 44%, transparent 70%);
+  animation: haloPulse 8.5s ease-in-out infinite reverse;
+}
+
+.background-ring {
+  border-radius: 50%;
+  border: 2px solid rgba(232, 188, 100, 0.2);
+}
+
+.background-ring-a {
+  left: 12%;
+  bottom: 10%;
+  width: min(28vw, 520px);
+  height: min(28vw, 520px);
+  border-right-color: transparent;
+  animation: slowOrbit 16s linear infinite;
+}
+
+.background-ring-b {
+  left: 30%;
+  top: 12%;
+  width: min(17vw, 320px);
+  height: min(17vw, 320px);
+  border-top-color: transparent;
+  border-left-color: rgba(7, 29, 67, 0.08);
+  animation: slowOrbit 13s linear infinite reverse;
+}
+
+.background-sweep {
+  left: -26%;
+  top: -20%;
+  width: 34%;
+  height: 150%;
+  background: linear-gradient(100deg, transparent, rgba(232, 188, 100, 0.09), transparent);
+  transform: rotate(12deg);
+  animation: backgroundSweep 10s ease-in-out infinite;
 }
 
 .connection-status {
@@ -438,6 +559,49 @@ h1 span:last-child {
 .placeholder-text {
   font-size: clamp(32px, 3vw, 70px);
   color: rgba(7, 29, 67, 0.65);
+}
+
+@keyframes backgroundBreathe {
+  0%, 100% { transform: scale(1) translate3d(0, 0, 0); opacity: 0.82; }
+  50% { transform: scale(1.04) translate3d(1.5%, -1%, 0); opacity: 1; }
+}
+
+@keyframes backgroundPatternDrift {
+  0% { background-position: 0 0, 0 0; }
+  100% { background-position: 420px 0, -620px 0; }
+}
+
+@keyframes productSpotlight {
+  0%, 100% { transform: translate(2%, 6%) scale(0.96); opacity: 0.74; }
+  50% { transform: translate(3%, 4%) scale(1.04); opacity: 1; }
+}
+
+@keyframes productRingSpin {
+  0% { transform: translate(2%, 6%) rotate(-12deg); opacity: 0.52; }
+  50% { opacity: 0.86; }
+  100% { transform: translate(2%, 6%) rotate(348deg); opacity: 0.52; }
+}
+
+@keyframes dotGridDrift {
+  0%, 100% { transform: translate3d(0, 0, 0); opacity: 0.24; }
+  50% { transform: translate3d(-18px, 14px, 0); opacity: 0.4; }
+}
+
+@keyframes haloPulse {
+  0%, 100% { transform: scale(0.96); opacity: 0.58; }
+  50% { transform: scale(1.08); opacity: 0.95; }
+}
+
+@keyframes slowOrbit {
+  0% { transform: rotate(0deg) scale(1); opacity: 0.42; }
+  50% { transform: rotate(180deg) scale(1.04); opacity: 0.74; }
+  100% { transform: rotate(360deg) scale(1); opacity: 0.42; }
+}
+
+@keyframes backgroundSweep {
+  0%, 18% { transform: translateX(0) rotate(12deg); opacity: 0; }
+  42% { opacity: 1; }
+  70%, 100% { transform: translateX(380%) rotate(12deg); opacity: 0; }
 }
 
 @keyframes productFloat {

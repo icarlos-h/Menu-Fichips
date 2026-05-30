@@ -6,9 +6,6 @@ const elements = {
   title: $("#productTitle"),
   price: $("#productPrice"),
   weight: $("#productWeight"),
-  ingredients: $("#productIngredients"),
-  ingredientsRow: $("#ingredientsRow"),
-  ingredientsLine: $("#ingredientsLine"),
   image: $("#productImage"),
   imageFallback: $("#imageFallback"),
   status: $("#connectionStatus"),
@@ -188,18 +185,10 @@ function getProductData(item) {
     "porção"
   ]) || CONFIG.fallbackWeight || "";
 
-  const ingredients = pickField(item, [
-    "ingredientes",
-    "ingredients",
-    "composicao",
-    "composição"
-  ]) || CONFIG.fallbackIngredients || "";
-
   return {
     title,
     price: formatPrice(price),
-    weight,
-    ingredients
+    weight
   };
 }
 
@@ -218,11 +207,6 @@ function renderProduct(data) {
 
   elements.price.textContent = data.price || CONFIG.fallbackPrice || "--";
   elements.weight.textContent = data.weight || CONFIG.fallbackWeight || "";
-
-  const ingredients = String(data.ingredients || CONFIG.fallbackIngredients || "").trim();
-  elements.ingredients.textContent = ingredients;
-  elements.ingredientsRow.hidden = !ingredients;
-  elements.ingredientsLine.hidden = !ingredients;
 
   elements.badge.textContent = CONFIG.badgeText || "Destaque";
 
@@ -247,8 +231,7 @@ function renderFallback(reason = "") {
   renderProduct({
     title: getCurrentProductTitle(),
     price: CONFIG.fallbackPrice || "--",
-    weight: CONFIG.fallbackWeight || "",
-    ingredients: CONFIG.fallbackIngredients || ""
+    weight: CONFIG.fallbackWeight || ""
   });
 
   elements.status.textContent = reason || "Usando dados locais.";
@@ -262,8 +245,7 @@ function renderCurrentProduct() {
     renderProduct({
       title: productTitle,
       price: CONFIG.fallbackPrice || "--",
-      weight: CONFIG.fallbackWeight || "",
-      ingredients: CONFIG.fallbackIngredients || ""
+      weight: CONFIG.fallbackWeight || ""
     });
 
     elements.status.textContent = `Produto não encontrado no App Script: ${productTitle}`;
