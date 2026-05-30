@@ -201,6 +201,34 @@ h1 span:last-child {
   animation: productRingSpin 12s linear infinite;
 }
 
+.product-image-wrap::before,
+.product-image-wrap::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+}
+
+.product-image-wrap::before {
+  z-index: 0;
+  width: min(68vw, 980px);
+  height: min(68vw, 980px);
+  background: radial-gradient(circle, rgba(232, 188, 100, 0.18), rgba(232, 188, 100, 0.08) 34%, transparent 62%);
+  transform: translate(2%, 6%);
+  animation: productSpotlight 6.5s ease-in-out infinite;
+}
+
+.product-image-wrap::after {
+  z-index: 1;
+  width: min(48vw, 720px);
+  height: min(48vw, 720px);
+  border: 3px solid rgba(232, 188, 100, 0.22);
+  border-left-color: transparent;
+  border-bottom-color: rgba(7, 29, 67, 0.08);
+  transform: translate(2%, 6%) rotate(-12deg);
+  animation: productRingSpin 12s linear infinite;
+}
+
 .product-image {
   position: relative;
   z-index: 2;
